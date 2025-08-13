@@ -1,5 +1,5 @@
 # Activate conda env, set minimal viable threads, export correct environments variables
-
+threads: 2
 rule all:
     input:
         "outputs/summary.csv"
@@ -13,6 +13,8 @@ rule schema_check:
         ok = "outputs/schema_ok.txt"
     log:
         "outputs/logs/schema_check.log"
+    conda:
+        "envs/pipeline.yaml"  
     shell:
         r"""
         set -euo pipefail
